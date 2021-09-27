@@ -17,11 +17,10 @@ age=int(age)
 age_hh = 100-age
 age_h = input(f"You will be hundred in {age_hh} years")
 
-from datetime import datetime
-currentYear = int(datetime.datetime.now (). year)
-age = 100 - int(age)
-currentYear += age
+currentYear = datetime.datetime.now().year
+year = int(currentYear + age_hh)
 print( f"{username} will turn 100 by {currentYear}")
+
 
 #Excercise no2
 #Ask user to input 3 numbers - width, length, height
