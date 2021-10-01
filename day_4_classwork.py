@@ -30,6 +30,7 @@
 #     print(num, "is a prime number")
 
 
+#did not finish
 def tree(n):
     z = n - 1
     x = 1
