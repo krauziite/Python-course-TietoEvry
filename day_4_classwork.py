@@ -30,19 +30,11 @@
 #     print(num, "is a prime number")
 
 
-
-def christmas_tree(n):
-    z=n-1
-    x=1
-    for i in range(0,n):
-        for i in range(0,z):
-            print('',end='')
-        for i in range(0,x):
-            print('+',end='')
-        for i in range(0,z):
-            print('',end='')
-        x=x*2
-        x=x-1
-        z=z-1
-        print()
-christmas_tree(5)
+def tree(n):
+    z = n - 1
+    x = 1
+    for i in range(n):
+        print(' ' * z + '+' * x + ' ' * z)
+        x+=2
+        z-=1
+tree(5)
