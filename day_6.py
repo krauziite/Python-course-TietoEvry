@@ -83,3 +83,19 @@ print(sentence_list)
 reversed_list=[i[::-1] for i in sentence_list]
 new_sentence=" ".join(reversed_list)
 print(new_sentence)
+
+
+# 4. Prime numbers -
+# this could be a weekend assignment, there is hardly enough time in class
+# Find and output the first 20 (even better option to choose how many first primes we want) prime numbers in
+# the form of a list i.e. [2,3,5,7,11, ...]
+
+def generate_n_primes(N):
+     primes  = []
+     chkthis = 2
+     while len(primes) < N:
+         ptest    = [chkthis for i in primes if chkthis%i == 0]
+         primes  += [] if ptest else [chkthis]
+         chkthis += 1
+     return primes
+print(generate_n_primes(20))
