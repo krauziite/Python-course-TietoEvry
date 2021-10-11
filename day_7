@@ -1,0 +1,22 @@
+# #1. The Big Result
+# def retList(x,y,z):
+#     new_list = [x,y,z]
+#     return new_list
+# a = retList(100,1,0)
+# a.sort()
+# smth=(a[0]+a[1])*a[2]
+# print(smth)
+
+
+#2.Palindrome
+# input_str=input("Type a word:")
+# input_str=input_str.replace(" ", "")
+# print(input_str)
+# def ispalindrome(input_str):
+#     lower = input_str.lower()
+#     return lower == lower[::-1]
+# not_palind=ispalindrome(input_str)
+# if not_palind:
+#     print("Yes")
+# else:
+#     print("No")
