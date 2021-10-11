@@ -9,6 +9,19 @@ for num in My_list:
 print("Sum = ",sum)
 print("Average = ", avg)
 
+list_numbers = []
+
+while True:
+    user_input = input("Input a number or 'q' to quit: ")
+    if user_input.lower() == 'q':
+        print("Thank you! Exiting")
+        break
+    else:
+        list_numbers.append(float(user_input))
+        print(f"All numbers: {list_numbers}\nAverage is {sum(list_numbers) / len(list_numbers):.2f}")
+        print(f"BOTTOM 3 {sorted(list_numbers)[:3]}")
+        print(f"TOP 3 {sorted(list_numbers)[-3:]}")
+
 # 1.b. The program shows both the average value of the numbers and ALL the numbers entered
 # PS Exiting the program is by entering "q"
 
@@ -69,6 +82,24 @@ cubes=[n**3 for n in no_list]
 print(f"All cubes: {cubes}")
 for el,i in no_list,cubes:
      print(f"{el} cubed is {i}")
+        
+first = int(input("first number: "))
+last = int(input("last number: "))
+if first < last:
+    # list comprehension
+    cubed = [n**3 for n in range(first, last+1)]
+    # list comprehensions are great but it is a bit tricky to print while creating a list comprehension
+    print(cubed)
+else:
+    print("not gonna happen")
+
+optional_list = []
+# regular loop is a bit easier to do extra work such as printing some output
+for n in range(first, last+1):
+    cube = n**3
+    print(f"{n} cubed: {cube}")
+    optional_list.append(cube)
+print(optional_list)
 
 # 3. Reversed words
 # The user enters a sentence.
@@ -83,6 +114,16 @@ print(sentence_list)
 reversed_list=[i[::-1] for i in sentence_list]
 new_sentence=" ".join(reversed_list)
 print(new_sentence)
+
+sentence = input("Input the sentence: ")
+words = sentence.split()
+print(words)
+# reversed_word_list = [word[::-1] for i, word in enumerate(words)]  # here we are not using i but it is nice to have if you want
+reversed_word_list = [word[::-1] for word in words]  # here we are not using i but it is nice to have if you want
+# reversed_word_list = [word[::-1] for word in words if len(word) > 2]  # with short word filter
+print(reversed_word_list)
+reversed_sentence = ' '.join(reversed_word_list).capitalize()
+print(f"{sentence} -> {reversed_sentence}")
 
 
 # 4. Prime numbers -
