@@ -14,8 +14,13 @@
 
 #2.
 def replace_item(d, bad_val, good_val):
-    for key, val in d:
+    for key, val in d.items():
         if val==bad_val:
-            d[val] = good_val
-        print(replace_item({'a': 5, 'b': 6, 'c': 5}, 5, 10))
-    return replace_item({'a': 5, 'b': 6, 'c': 5}, 5, 10)
+            d[key] = good_val
+    return d
+
+my_dict= {'a': 5, 'b': 6, 'c': 5}
+print(my_dict)
+new_dict=replace_item(my_dict, 5, 12)
+print(new_dict)
+print(my_dict)
