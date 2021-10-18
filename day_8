@@ -35,3 +35,15 @@ print(my_dict)
 # 
 # new_dict=clean_dict_value({'a': 5, 'b': 6, 'c': 5}, 5)
 # print(new_dict)
+
+3.b
+def clean_dict_value (d, v_list):
+    backup=d.copy()
+    for key, value in d.copy().items():
+        for i in v_list:
+            if value==i:
+                del d[key]
+    return(d)
+
+new_dict=clean_dict_value({'a': 5, 'b': 6, 'c': 5, 'd':3}, [3,4,5])
+print(new_dict)
