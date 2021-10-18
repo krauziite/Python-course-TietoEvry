@@ -24,3 +24,14 @@ print(my_dict)
 new_dict=replace_item(my_dict, 5, 12)
 print(new_dict)
 print(my_dict)
+
+3.a
+# def clean_dict_value (d, bad_val):
+#     backup=d.copy()
+#     for key, value in d.copy().items():
+#         if value==bad_val:
+#             del d[key]
+#     return(d)
+# 
+# new_dict=clean_dict_value({'a': 5, 'b': 6, 'c': 5}, 5)
+# print(new_dict)
