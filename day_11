@@ -1,0 +1,10 @@
+from new_deck import deck
+
+import itertools, random
+def get_shuffle():
+#   deck = list(itertools.product(range(1, 14), ['SPADE', 'HEART', 'DIAMOND', 'CLUB']))
+   random.shuffle(deck)
+   for i in range(1):
+      new_deck = list(deck)
+      return new_deck
+print(get_shuffle())
