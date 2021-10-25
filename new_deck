@@ -1,0 +1,3 @@
+import itertools, random
+deck = list(itertools.product(range(1, 14), ['SPADE', 'HEART', 'DIAMOND', 'CLUB']))
+print(deck)
