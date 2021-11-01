@@ -68,9 +68,13 @@ clean_punkts("veid_poems.txt", "veidenbaums_clean_punkts.txt", bad_chars=string.
 # es 3242
 # PS to test, for srcpath use the file that is poetry only and has no punctuation and also the words are all in lowercase
 
-#def get_word_usage (srcpath, destpath):
-with open("veidenbaums_clean_punkts.txt", encoding="utf-8") as f:
-    word_list=Counter(f)
-    word_list.most_common((10))
-print("", word_list.most_common(10))
-#print(get_word_usage("veid_poems.txt", "common_words.txt")
+def get_word_usage (srcpath, destpath):
+    with open(srcpath, mode="r", encoding="utf-8") as src_file, open(destpath, mode="w", encoding="utf-8") as dest_file:
+        text = src_file.read()
+        world_list=Counter(text)
+        com=word_list.most_common()
+    print(com)
+    return com
+    dest_file.write(com)
+get_word_usage("veidenbaums_clean_punkts.txt", "common.txt")
+
