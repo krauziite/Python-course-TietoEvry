@@ -1,0 +1,9 @@
+import json
+import requests
+
+response= requests.get("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita")
+print(response.json())
+print(type(response))
+
+with open("coctails.json", mode="w") as write_file:
+    write_file.write(response.text)
