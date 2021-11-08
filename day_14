@@ -1,0 +1,74 @@
+from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time  # we might need to insert some delay in the code
+from selenium.webdriver.chrome.service import Service
+import requests
+from bs4 import BeautifulSoup as bs
+
+
+driver = webdriver.Chrome("C:\chromedriver.exe")  # set path to chromedriver if you have no PATH
+url = "https://www.ss.com/"
+driver.get(url)  # this will open the url in browser
+time.sleep(2)  # this will wait for 2 seconds
+# sīkdatnes=driver.find_element_by_id("onetrust-accept-btn-handler")
+# sīkdatnes.click()
+
+
+moto_element = driver.find_element_by_id("mtd_178")  # this id is for this particular page
+print(moto_element.get_attribute("href"))
+print(moto_element.get_attribute("nosuchattributehref"))
+
+time.sleep(0.5)
+#
+moto_element.click()
+
+motocikli=driver.find_element_by_id("ahc_1075")
+print(motocikli.get_attribute("href"))
+print(motocikli.get_attribute("nosuchattributehref"))
+
+time.sleep(0.5)
+#
+motocikli.click()
+
+bmw=driver.find_element_by_id("ahc_4972")
+print(bmw.get_attribute("href"))
+print(bmw.get_attribute("nosuchattributehref"))
+
+time.sleep(0.5)
+#
+bmw.click()
+headline = driver.find_element_by_id("head_line")
+headline.text
+
+head_cells = headline.find_elements_by_tag_name("td")
+print(len(head_cells))
+
+head_texts = [cell.text for cell in head_cells]
+print(head_texts)
+
+table_rows = driver.find_elements_by_tag_name("tr")
+print("Found", len(table_rows), "elements")
+
+ad_rows = [row for row in table_rows if row.get_attribute("id") and row.get_attribute("id").startswith("tr_")]
+print("Found", len(ad_rows), "elements")
+
+table_list_1=driver.find_elements_by_xpath("/html/body/div[4]/div/table/tbody/tr/td/div[1]/table/tbody/tr/td/form/table[2]")
+for i in table_list_1:
+    print(i.text)
+
+with open('experiment.txt', mode="w", encoding="utf-8") as f:
+    f.write(i.text)
+
+
+
+first_ad = ad_rows[0]
+print(first_ad.text)
+
+data_cells = first_ad.find_elements_by_tag_name("td")  # stands for table data
+print(len(data_cells))
+
+texts = [cell.text for cell in data_cells]
+print(texts)
+
+
