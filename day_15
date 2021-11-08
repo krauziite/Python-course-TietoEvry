@@ -1,20 +1,53 @@
 import sqlite3
 
+
 def create_connection(dbpath):
-    conn=sqlite3.connect(dbpath)
-    cur=conn.cursor()
-    return cur
-
-create_connection('chinook.db')
+    return sqlite3.connect(dbpath)
 
 
-def create_artist(cur, artist_name):
-    cur.execute('INSERT INTO albums (Title, ArtistId) VALUES (?, ?)',
-                artist_name)
-    return cur.fetchone()
+con = create_connection('chinook.db')
 
 
-def read_artists(cur):
-    row_it=cur.execute('SELECT * FROM albums LIMIT 10')
-    results_list = [row for row in row_it]  # just list(row_it) would work here as well
-    print(results_list)
+def create_artist(conn, artist_name):
+    cur = conn.cursor()
+    cur.execute('INSERT INTO artists (Name) VALUES (?)', (artist_name,))
+
+
+create_artist(con, "The Beatles")  # we will keep creating new Beatles
+
+
+def read_artists(conn, limit=10):
+    cur = conn.cursor()
+    cur.execute('select * from artists limit ?', (limit,))
+    return cur.fetchall()
+
+
+artists = read_artists(con)
+print(artists)
+
+
+def update_artist(id, new_name):
+    cur = con.cursor()
+    cur.execute('UPDATE artists SET Name = ? WHERE ArtistId = ?',
+                (id, new_name))
+
+
+update_artist(1, "Queens")
+
+artists = read_artists(con, 1000)
+print(artists)
+
+
+def delete_artist(id=None, name=""):
+    cur = con.cursor()
+    cur.execute('DELETE FROM artists WHERE Name = ? OR ArtistId = ?',
+                (name, id))
+
+
+delete_artist(name="AC/DC")
+
+artists = read_artists(con)
+print(artists)
+
+# without commit this will not be saved
+con.close()
